@@ -1,0 +1,82 @@
+/* 
+font-family: 'Barlow Condensed', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Source Code Pro', monospace; 
+*/
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+    background-image: url("images/background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.timezone{
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+    font-size: 60px;
+    margin-top: 30px;
+}
+.date-content{
+    font-family: 'Source Code Pro', monospace; 
+    text-align: center;
+    font-size: 50px;
+    /* margin-top: 60px; */
+}
+.time-content{
+    font-family: 'Source Code Pro', monospace; 
+    text-align: center;
+    font-size: 75px;
+    margin-bottom: 10px;
+}
+
+.current-temp{
+    border: solid white;
+    border-radius: 10px;
+    padding: 12px;
+    width: 25%;
+    margin: auto;
+    position: relative;
+}
+.current-temp::before{
+    content: "";
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.65;
+    border-radius: 10px;
+  }
+.weather-item{
+    font-size: 25px;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: white;
+    justify-content: space-between;
+    display: flex;
+    position: relative;
+    margin: 5px 0px 0px 5px;
+}
+
+.hourly-block{
+    border: solid white;
+    border-radius: 10px;
+    padding: 12px;
+    width: 25%;
+    position: relative;
+}
+
+.hourly-item{
+    font-size: 25px;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: white;
+    justify-content: space-between;
+    display: flex;
+    position: relative;
+    margin: 5px 0px 0px 5px;
+}
