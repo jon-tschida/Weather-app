@@ -55,6 +55,8 @@ setInterval(function () {
 }, 1000);
 
 
+
+
 //
 //  Functions for populating Hourly and Daily forecasts //
 //
@@ -144,45 +146,50 @@ const populateHourly = function (data) {
 // API Calls for the weather data //
 //
 
-// This API call handles the hours and 7 day forecast
-let data;
-let request = new XMLHttpRequest();
-request.open(
-    `GET`,
-    `https://api.openweathermap.org/data/2.5/onecall?lat=41.2714&lon=-95.9386&exclude=minutely&appid=2a8ab662e8539e2cb45726e6080084e6`
-);
-request.send();
-request.onload = () => {
-    // console.log(request);
-    if (request.status == 200) {
-        data = JSON.parse(request.response);
-        console.log(data);
-    } else {
-        console.log(`error: ${request.status}, ${request.statusText}`);
-    }
-    populateDaily(data);
-    populateHourly(data);
-};
+// putting the API calls inside our current position funcion, so we can just automatically get the lat and long from the user. 
+navigator.geolocation.getCurrentPosition(function (location) {
+    let lat = location.coords.latitude;
+    let long = location.coords.longitude;
 
-// This API call retrieves our current temp, min, max, wind, feels like, humidity
-let data2;
-let request2 = new XMLHttpRequest();
-request2.open(
-    `GET`,
-    `https://api.openweathermap.org/data/2.5/weather?lat=41.2714&lon=-95.9386&appid=2a8ab662e8539e2cb45726e6080084e6`
-);
-request2.send();
-request2.onload = () => {
-    // console.log(request);
-    if (request2.status == 200) {
-        data2 = JSON.parse(request2.response);
-        // console.log(data2)
-    } else {
-        console.log(`error: ${request2.status}, ${request2.statusText}`);
-    }
-    // timeZoneContent.textContent = `${data2.name}`
-    showWeather(data2);
-};
+    // This API call handles the hours and 7 day forecast
+    let data;
+    let request = new XMLHttpRequest();
+    request.open(
+        `GET`,
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely&appid=2a8ab662e8539e2cb45726e6080084e6`
+    );
+    request.send();
+    request.onload = () => {
+        // console.log(request);
+        if (request.status == 200) {
+            data = JSON.parse(request.response);
+            console.log(data);
+        } else {
+            console.log(`error: ${request.status}, ${request.statusText}`);
+        }
+        populateDaily(data);
+        populateHourly(data);
+    };
 
-// https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=-${longitude}&appid=2a8ab662e8539e2cb45726e6080084e6
-// https://api.openweathermap.org/data/2.5/weather?lat=41.2714&lon=-95.9386&appid=2a8ab662e8539e2cb45726e6080084e6
+    // This API call retrieves our current temp, min, max, wind, feels like, humidity
+    let data2;
+    let request2 = new XMLHttpRequest();
+    request2.open(
+        `GET`,
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=2a8ab662e8539e2cb45726e6080084e6`
+    );
+    request2.send();
+    request2.onload = () => {
+        // console.log(request);
+        if (request2.status == 200) {
+            data2 = JSON.parse(request2.response);
+            // console.log(data2)
+        } else {
+            console.log(`error: ${request2.status}, ${request2.statusText}`);
+        }
+        // timeZoneContent.textContent = `${data2.name}`
+        showWeather(data2);
+    };
+});
+// https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=-${long}&appid=2a8ab662e8539e2cb45726e6080084e6
+// https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=2a8ab662e8539e2cb45726e6080084e6
