@@ -22,53 +22,100 @@
 </head>
 
 <body>
-    <div class="timezone">
-        <p class="timezone-content"></p>
-    </div>
-    <div class="date">
-        <p class="date-content">February 7, 2022</p>
-    </div>
-    <div class="time">
-        <p class="time-content">10:43pm</p>
-    </div>
-    <div class="current-temp">
-        <div class="weather-item">
-            <div>Current Temp</div>
-            <div>15 degrees</div>
-        </div>
-        <div class="weather-item">
-            <div>Feels like</div>
-            <div>10 degrees</div>
-        </div>
-        <div class="weather-item">
-            <div>Humidity</div>
-            <div>10%</div>
-        </div>
-        <div class="weather-item">
-            <div>Wind Speed</div>
-            <div>35 mph</div>
-        </div>
-        <div class="weather-item">
-            <div>Sunrise</div>
-            <div>5:00am</div>
-        </div>
-        <div class="weather-item">
-            <div>Sunset</div>
-            <div>6:00pm</div>
-        </div>
-    </div>
-    <div class="hourly-block">
-        <div class="hourly-item">
-            <div>Temp</div>
-            <div>10 degrees</div>
-        </div>
-    </div>
+    <div class="top-blocks">
+        <div class="current-temp">
+            <div class="weather-item">
+                <p class="timezone-content">Omaha</p>
+                <p class="date-content">February 7, 2022</p>
+                <p class="time-content">10:43pm</p>
+            </div>
 
+            <hr>
 
-    <div class="daily-block">
+            <div class="current-temp-weather">
 
+                <div class="cur-temp-content">15°f</div>
+                <div class="high-and-low">↑55° ↓24°</div>
+                <div class="weather-item">
+                    <div>Feels like</div>
+                    <div>Humidity</div>
+                    <div>Wind Speed</div>
+                </div>
+                <div class="weather-item">
+                    <div>10 degrees</div>
+                    <div style="margin-right: 40px;">10%</div>
+                    <div>35 mph</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="hourly-block">
+            <p class="hourly-title">Hourly</p>
+            <hr>
+            <div class="row-1">
+                <div class="hourly-item-r1">
+                    <div>row 1</div>
+                </div>
+                <div class="hourly-item-r1">
+                    <div>row 1</div>
+                </div>
+                <div class="hourly-item-r1">
+                    <div>row 1</div>
+                </div>
+            </div>
+            <div class="row-2">
+                <div class="hourly-item-r2">
+                    <div>row 2</div>
+                </div>
+                <div class="hourly-item-r2">
+                    <div>row 2</div>
+                </div>
+                <div class="hourly-item-r2">
+                    <div>row 2</div>
+                </div>
+            </div>
+        </div>
     </div>
+    <hr>
 
+    <div class="weather-forecast">
+        <div class="weather-forecast-item">
+            <div class="day">Sat</div>
+            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather icon" class="w-icon" />
+            <div class="temp">Night - 2</div>
+            <div class="temp">Day - 8</div>
+        </div>
+        <div class="weather-forecast-item">
+            <div class="day">Sun</div>
+            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather icon" class="w-icon" />
+            <div class="temp">Night - 2</div>
+            <div class="temp">Day - 8</div>
+        </div>
+        <div class="weather-forecast-item">
+            <div class="day">Mon</div>
+            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather icon" class="w-icon" />
+            <div class="temp">Night - 2</div>
+            <div class="temp">Day - 8</div>
+        </div>
+        <div class="weather-forecast-item">
+            <div class="day">Tues</div>
+            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather icon" class="w-icon" />
+            <div class="temp">Night - 2</div>
+            <div class="temp">Day - 8</div>
+        </div>
+        <div class="weather-forecast-item">
+            <div class="day">Wed</div>
+            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather icon" class="w-icon" />
+            <div class="temp">Night - 2</div>
+            <div class="temp">Day - 8</div>
+        </div>
+        <div class="weather-forecast-item">
+            <div class="day">Thurs</div>
+            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="weather icon" class="w-icon" />
+            <div class="temp">Night - 2</div>
+            <div class="temp">Day - 8</div>
+        </div>
+    </div>
     <script src="script.js" async defer></script>
 
 </html>

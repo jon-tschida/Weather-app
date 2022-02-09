@@ -4,7 +4,7 @@ font-family: 'Montserrat', sans-serif;
 font-family: 'Source Code Pro', monospace; 
 */
 
-
+/* GENERAL STYLING */
 *{
   margin: 0;
   padding: 0;
@@ -15,32 +15,23 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-.timezone{
-    font-family: 'Barlow Condensed', sans-serif;
-    text-align: center;
-    font-size: 60px;
-    margin-top: 30px;
-}
-.date-content{
-    font-family: 'Source Code Pro', monospace; 
-    text-align: center;
-    font-size: 50px;
-    /* margin-top: 60px; */
-}
-.time-content{
-    font-family: 'Source Code Pro', monospace; 
-    text-align: center;
-    font-size: 75px;
-    margin-bottom: 10px;
-}
 
+/* END GENERAL STYLING */
+
+.top-blocks{
+    display: flex;
+    padding: 20px;
+}
+/* CURRENT TEMP BLOCK */
 .current-temp{
     border: solid white;
     border-radius: 10px;
     padding: 12px;
-    width: 25%;
-    margin: auto;
+    width: 40%;
     position: relative;
+    margin-right: 5%;
+    margin-left: 5%;
+    float: left;
 }
 .current-temp::before{
     content: "";
@@ -52,7 +43,43 @@ body{
     left: 0px;
     opacity: 0.65;
     border-radius: 10px;
-  }
+}
+
+/* TOP ROW IN CURRENT TEMP BLOCK */
+.timezone-content{
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+    font-size: 50px;
+}
+.date-content{
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+    font-size: 35px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.time-content{
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+    font-size: 50px;
+}
+/* END TOP ROW CURRENT TEMP BLOCK */
+
+.cur-temp-content{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 75px;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+.high-and-low{
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+    color: white;
+    position: relative;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
 .weather-item{
     font-size: 25px;
     font-family: 'Barlow Condensed', sans-serif;
@@ -62,16 +89,47 @@ body{
     position: relative;
     margin: 5px 0px 0px 5px;
 }
+/* END CURRENT TEMP BLOCK */
 
+/* BEGIN HOURLY BLOCK */
 .hourly-block{
     border: solid white;
     border-radius: 10px;
     padding: 12px;
-    width: 25%;
+    width: 40%;
     position: relative;
-}
+    float: right;
 
-.hourly-item{
+    margin-right: 5%;
+    margin-left: 5%;
+}
+.hourly-block::before{
+    content: "";
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.65;
+    border-radius: 10px;
+}
+.hourly-title{
+    font-size: 38px;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: white;
+    position: relative;
+    margin-bottom: 10px;
+}
+.row-1{
+    width: fit-content;
+    margin: auto;
+}
+.row-2{
+    width: fit-content;
+    margin: auto;
+}
+.hourly-item-r1{
     font-size: 25px;
     font-family: 'Barlow Condensed', sans-serif;
     color: white;
@@ -79,4 +137,72 @@ body{
     display: flex;
     position: relative;
     margin: 5px 0px 0px 5px;
+    float: left;
 }
+.hourly-item-r2{
+    font-size: 25px;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: white;
+    justify-content: space-between;
+    display: flex;
+    position: relative;
+    margin: 5px 0px 0px 5px;
+    float: left;
+}
+.hourly-title{
+    font-size: 25px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+}
+/* END HOURLY BLOCK */
+
+/* BEGIN FORECAST BLOCK */
+.weather-forecast{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    }
+    .weather-forecast-item{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 10px;
+      border: white solid;
+      border-radius: 10px;
+      position: relative;
+      padding: 10px
+    }
+    .weather-forecast-item::before{
+      content: "";
+      background-color: black;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.65;
+      border-radius: 10px;
+    }
+    .day{
+      font-family: "Barlow Condensed", sans-serif;
+      position: relative;
+      font-size: 25px;
+      padding: 5px 15px;
+      background-color: #6b6b6b;
+      border-radius: 50px;
+      color: white;
+    }
+    .temp{
+      font-family: "Barlow Condensed", sans-serif;
+      position: relative;
+      font-size: 20px;
+      color: white;
+    }
+    .w-icon{
+      position: relative;
+    }
+
+/* END FORECAST BLOCK */

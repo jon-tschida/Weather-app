@@ -4,9 +4,11 @@
 const dateContent = document.querySelector(`.date-content`);
 const timeContent = document.querySelector(`.time-content`);
 
-const currentTemp = document.querySelector(`.current-temp`);
+const currentTemp = document.querySelector(`.current-temp-weather`);
 
 const timeZoneContent = document.querySelector(`.timezone-content`);
+
+const weatherForecast = document.querySelector(`.weather-forecast`)
 
 
 // formatting the time //
@@ -54,6 +56,30 @@ setInterval(function () {
 }, 1000);
 
 
+
+const showWeather = function (data) {
+    let { temp, feels_like, temp_min, temp_max, humidity } = data.main;
+    let wind_speed = data.wind.speed;
+    currentTemp.innerHTML = `
+            <div class="cur-temp-content">${Math.trunc(((temp - 273.15) * 9) / 5 + 32)}°f</div>
+            <div class="high-and-low">↑${Math.trunc(((temp_max - 273.15) * 9) / 5 + 32)}° ↓${Math.trunc(((temp_min - 273.15) * 9) / 5 + 32)}°</div>
+            <div class="weather-item">
+                <div>Feels like</div>
+                <div>Humidity</div>
+                <div>Wind Speed</div>
+            </div>
+            <div class="weather-item">
+                <div>${Math.trunc(((feels_like - 273.15) * 9) / 5 + 32)}°</div>
+                <div>${humidity}%</div>
+                <div>${Math.trunc(wind_speed * 2.237)} mph</div>
+            </div>
+    `
+}
+
+
+
+
+// This API call handles the hours and 7 day forecast
 let data;
 let request = new XMLHttpRequest();
 request.open(
@@ -69,36 +95,48 @@ request.onload = () => {
     } else {
         console.log(`error: ${request.status}, ${request.statusText}`);
     }
-    timeZoneContent.textContent = `${data.timezone} timezone`
-    showWeather(data);
+    populateDaily(data)
 };
-const showWeather = function (data) {
-    let { temp, feels_like, humidity, wind_speed, sunrise, sunset } = data.current;
-    currentTemp.innerHTML = `
-    <div class="weather-item">
-            <div>Current Temp</div>
-            <div>${Math.trunc((temp - 273.15) * 9 / 5 + 32)} °F</div>
-        </div>
-        <div class="weather-item">
-            <div>Feels like</div>
-            <div>${Math.trunc((feels_like - 273.15) * 9 / 5 + 32)} °F</div>
-        </div>
-        <div class="weather-item">
-            <div>Humidity</div>
-            <div>${humidity}%</div>
-        </div>
-        <div class="weather-item">
-            <div>Wind Speed</div>
-            <div>${Math.trunc(wind_speed * 2.237)}MPH</div>
-        </div>
-        <div class="weather-item">
-            <div>Sunrise</div>
-            <div>${formatAMPM(new Date(sunrise * 1000))}</div>
-        </div>
-        <div class="weather-item">
-            <div>Sunset</div>
-            <div>${formatAMPM(new Date(sunset * 1000))}</div>
-        </div>
-    `
+
+// This API call retrieves our current temp, min, max, wind, feels like, humidity
+let data2;
+let request2 = new XMLHttpRequest();
+request2.open(
+    `GET`,
+    `https://api.openweathermap.org/data/2.5/weather?lat=41.2714&lon=-95.9386&appid=2a8ab662e8539e2cb45726e6080084e6`
+);
+request2.send();
+request2.onload = () => {
+    // console.log(request);
+    if (request2.status == 200) {
+        data2 = JSON.parse(request2.response);
+        // console.log(data2)
+    } else {
+        console.log(`error: ${request2.status}, ${request2.statusText}`);
+    }
+    // timeZoneContent.textContent = `${data2.name}`
+    showWeather(data2)
+};
+
+const populateDaily = function (data) {
+    let otherDayForecast = ``;
+    data.daily.forEach((day, i) => {
+        if (i === 0) {
+        } else {
+            let weekdayDate = new Date(day.dt * 1000)
+            let weekday = new Intl.DateTimeFormat(`en-US`, { weekday: `short` }).format(weekdayDate);
+            otherDayForecast += `
+            <div class="weather-forecast-item">
+                <div class="day">${weekday}</div>
+                <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">Day: ${Math.trunc(((day.temp.day - 273.15) * 9) / 5 + 32)}°</div>
+                <div class="temp">Night: ${Math.trunc(((day.temp.night - 273.15) * 9) / 5 + 32)}°</div>
+            </div>
+            `;
+        }
+    });
+    weatherForecast.innerHTML = otherDayForecast;
 }
+
 // https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=-${longitude}&appid=2a8ab662e8539e2cb45726e6080084e6
+// https://api.openweathermap.org/data/2.5/weather?lat=41.2714&lon=-95.9386&appid=2a8ab662e8539e2cb45726e6080084e6
