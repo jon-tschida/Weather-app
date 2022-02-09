@@ -15,6 +15,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+h1{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
 
 /* END GENERAL STYLING */
 
@@ -132,14 +136,12 @@ body {
 }
 .row-1 {
   display: flex;
-
-  border: white solid;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
+  margin-top: 20px;
 }
 .row-2 {
   display: flex;
 
-  border: white solid;
 }
 .hourly-item-r1 {
   font-size: 25px;
@@ -149,6 +151,9 @@ body {
   position: relative;
   text-align: center;
   border: white solid;
+  border-radius: 10px;
+  padding: 10px;
+
 }
 .hourly-item-r2 {
   font-size: 25px;
@@ -157,8 +162,10 @@ body {
   margin: auto;
   position: relative;
   text-align: center;
-
   border: white solid;
+  border-radius: 10px;
+  padding: 10px;
+
 }
 /* END HOURLY BLOCK */
 
