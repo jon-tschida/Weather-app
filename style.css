@@ -63,6 +63,15 @@ body {
   text-align: center;
   font-size: 50px;
 }
+.weather-item-header{
+    font-size: 25px;
+    font-family: "Barlow Condensed", sans-serif;
+    color: white;
+    justify-content: space-between;
+    display: flex;
+    position: relative;
+    margin: 5px 0px 0px 5px;   
+}
 /* END TOP ROW CURRENT TEMP BLOCK */
 
 .cur-temp-content {
@@ -84,10 +93,9 @@ body {
   font-size: 25px;
   font-family: "Barlow Condensed", sans-serif;
   color: white;
-  justify-content: space-between;
+  justify-content:space-around;
   display: flex;
   position: relative;
-  margin: 5px 0px 0px 5px;
 }
 /* END CURRENT TEMP BLOCK */
 
@@ -123,16 +131,12 @@ body {
   margin-bottom: 10px;
 }
 .row-1 {
-  /* width: fit-content; */
-  margin: auto;
   display: flex;
 
   border: white solid;
   margin-bottom: 60px;
 }
 .row-2 {
-  /* width: fit-content; */
-  margin: auto;
   display: flex;
 
   border: white solid;
@@ -141,27 +145,18 @@ body {
   font-size: 25px;
   font-family: "Barlow Condensed", sans-serif;
   color: white;
-
-  justify-content: space-between;
-  display: flex;
-
   margin: auto;
-  float: left;
   position: relative;
-
+  text-align: center;
   border: white solid;
 }
 .hourly-item-r2 {
   font-size: 25px;
   font-family: "Barlow Condensed", sans-serif;
   color: white;
-
-  justify-content: space-between;
-  display: flex;
-
   margin: auto;
-  float: left;
   position: relative;
+  text-align: center;
 
   border: white solid;
 }
