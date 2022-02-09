@@ -8,6 +8,8 @@ const timeZoneContent = document.querySelector(`.timezone-content`);
 
 const weatherForecast = document.querySelector(`.weather-forecast`);
 
+const moreInfo = document.querySelector(`.more-info`);
+
 // Hourly Rows
 const row1 = document.querySelector(`.row-1`);
 const row2 = document.querySelector(`.row-2`);
@@ -71,12 +73,10 @@ const showWeather = function (data) {
         ((temp_max - 273.15) * 9) / 5 + 32
     )}° ↓${Math.trunc(((temp_min - 273.15) * 9) / 5 + 32)}°</div>
             <div class="weather-item">
-                <!-- <div>Humidity</div> -->
                 <div>Feels like</div>
                 <div>Wind Speed</div>
             </div>
             <div class="weather-item">
-                <!-- <div>${humidity}%</div> -->
                 <div>${Math.trunc(((feels_like - 273.15) * 9) / 5 + 32)}°</div>
                 <div>${Math.trunc(wind_speed * 2.237)} mph</div>
             </div>
@@ -142,6 +142,7 @@ const populateHourly = function (data) {
     row2.innerHTML = row2HourForecast;
 };
 
+
 //
 // API Calls for the weather data //
 //
@@ -160,10 +161,8 @@ navigator.geolocation.getCurrentPosition(function (location) {
     );
     request.send();
     request.onload = () => {
-        // console.log(request);
         if (request.status == 200) {
             data = JSON.parse(request.response);
-            console.log(data);
         } else {
             console.log(`error: ${request.status}, ${request.statusText}`);
         }
@@ -180,14 +179,11 @@ navigator.geolocation.getCurrentPosition(function (location) {
     );
     request2.send();
     request2.onload = () => {
-        // console.log(request);
         if (request2.status == 200) {
             data2 = JSON.parse(request2.response);
-            // console.log(data2)
         } else {
             console.log(`error: ${request2.status}, ${request2.statusText}`);
         }
-        // timeZoneContent.textContent = `${data2.name}`
         showWeather(data2);
     };
 });
