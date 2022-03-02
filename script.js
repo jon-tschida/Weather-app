@@ -157,7 +157,7 @@ navigator.geolocation.getCurrentPosition(function (location) {
     let request = new XMLHttpRequest();
     request.open(
         `GET`,
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely&appid=2a8ab662e8539e2cb45726e6080084e6`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely&appid=AddAPIkeyHERE`
     );
     request.send();
     request.onload = () => {
@@ -175,7 +175,7 @@ navigator.geolocation.getCurrentPosition(function (location) {
     let request2 = new XMLHttpRequest();
     request2.open(
         `GET`,
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=2a8ab662e8539e2cb45726e6080084e6`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=AddAPIkeyHERE`
     );
     request2.send();
     request2.onload = () => {
@@ -187,5 +187,3 @@ navigator.geolocation.getCurrentPosition(function (location) {
         showWeather(data2);
     };
 });
-// https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=-${long}&appid=2a8ab662e8539e2cb45726e6080084e6
-// https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=2a8ab662e8539e2cb45726e6080084e6
